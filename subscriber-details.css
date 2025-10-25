@@ -1,0 +1,149 @@
+/* subscriber-details.css */
+body, html, button, h1, h2, h3, h4, h5, h6, p, a, input, textarea, label {
+    font-family: 'Alexandria', Arial, sans-serif !important;
+}
+.subscriber-details {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* header / top area: place image + name above divider */
+.subscriber-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 20px;
+    border-bottom: 2px solid #C4C4C4; /* divider under the top (updated to #C4C4C4) */
+}
+
+.subscriber-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+}
+
+.subscriber-header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.subscriber-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* make circular */
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    flex-shrink: 0;
+}
+
+.subscriber-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* زر معلومات عن المطعم */
+#restaurantInfoBtn {
+    color: #FF751F;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 8px;
+    padding: 0;
+    transition: color 0.2s;
+}
+#restaurantInfoBtn:hover {
+    color: #e05e00;
+}
+
+
+.subscriber-header h2 {
+    color: #ffffff; /* name color: white */
+    font-size: 1rem;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* back-button removed from markup; styles intentionally omitted */
+
+.subscriber-info {
+    margin-bottom: 30px;
+}
+
+.info-group {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.info-group p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.info-group strong {
+    color: #495057;
+    margin-left: 10px;
+}
+
+.subscription-details {
+    border-top: 1px solid #dee2e6;
+    padding-top: 20px;
+}
+
+.subscription-details h3 {
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .subscriber-details {
+        padding: 10px;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .subscriber-card {
+        padding: 15px;
+    }
+}
+
+/* Fixed footer */
+.site-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #222;
+    color: #fff;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.95rem;
+    z-index: 1000;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+}
+.site-footer a { color: #ffd9b8; text-decoration: none; }
+
+/* make sure page content isn't hidden behind the fixed footer */
+.container {
+    padding-bottom: 64px; /* roughly footer height + spacing */
+}

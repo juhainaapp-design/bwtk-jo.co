@@ -1,23 +1,77 @@
 window.addEventListener('DOMContentLoaded', function() {
-	var logo = document.querySelector('.logo');
-	if (logo) {
-		logo.addEventListener('click', function() {
-			window.location.reload();
-		});
-	}
+    var logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('click', function() {
+            window.location.reload();
+        });
+    }
 
-	// تهيئة تحميل الصور مع تأثير Shimmer
-	var images = document.querySelectorAll('.service-icon');
-	images.forEach(function(img) {
-		if (img.complete) {
-			img.classList.add('loaded');
-		} else {
-			img.addEventListener('load', function() {
-				img.classList.add('loaded');
-			});
-		}
-	});
+    // تهيئة تحميل الصور مع تأثير Shimmer
+    var images = document.querySelectorAll('.service-icon');
+    images.forEach(function(img) {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                img.classList.add('loaded');
+            });
+        }
+    });
 });
+
+// التعامل مع عرض تفاصيل المشترك
+function showSubscriberDetails(subscriberId, element) {
+    // الحصول على معلومات البطاقة المحددة
+    const card = element || event.currentTarget;
+    const image = card.querySelector('img');
+    const title = card.querySelector('h3');
+
+    // في الواقع، ستقوم باسترجاع البيانات من قاعدة البيانات
+    // هذا مثال توضيحي فقط
+    const subscriberData = {
+        id: subscriberId,
+        name: title ? title.textContent : '',
+        image: image ? image.src : '',
+        imageAlt: image ? image.alt : '',
+        phone: "0777123456",
+        email: "ahmed@example.com",
+        address: "عمان - الأردن",
+        subscriptionDate: "2023-10-26",
+        subscriptionStatus: "نشط",
+        subscriptionType: "سنوي",
+        subscriptionValue: "100 دينار",
+        renewalDate: "2024-10-26"
+    };
+
+    // تخزين بيانات المشترك في localStorage للوصول إليها في صفحة التفاصيل
+    localStorage.setItem('selectedSubscriber', JSON.stringify(subscriberData));
+    
+    // الانتقال إلى صفحة التفاصيل
+    window.location.href = 'subscriber-details.html';
+}
+
+// التحقق مما إذا كنا في صفحة تفاصيل المشترك
+if (window.location.pathname.includes('subscriber-details.html')) {
+    // استرجاع بيانات المشترك من localStorage
+    const subscriberData = JSON.parse(localStorage.getItem('selectedSubscriber') || '{}');
+    
+    // ملء البيانات في الصفحة
+    const subscriberImage = document.getElementById('subscriberImage');
+    if (subscriberImage && subscriberData.image) {
+        subscriberImage.src = subscriberData.image;
+        subscriberImage.alt = subscriberData.imageAlt || subscriberData.name;
+    }
+
+    document.getElementById('subscriberName').textContent = subscriberData.name || '';
+    document.getElementById('phoneNumber').textContent = subscriberData.phone || '';
+    document.getElementById('email').textContent = subscriberData.email || '';
+    document.getElementById('address').textContent = subscriberData.address || '';
+    document.getElementById('subscriptionDate').textContent = subscriberData.subscriptionDate || '';
+    document.getElementById('subscriptionStatus').textContent = subscriberData.subscriptionStatus || '';
+    document.getElementById('subscriptionType').textContent = subscriberData.subscriptionType || '';
+    document.getElementById('subscriptionValue').textContent = subscriberData.subscriptionValue || '';
+    document.getElementById('renewalDate').textContent = subscriberData.renewalDate || '';
+}
 window.addEventListener('DOMContentLoaded', function() {
 	var links = document.querySelectorAll('.nav-link');
 	if (links.length > 0) {
