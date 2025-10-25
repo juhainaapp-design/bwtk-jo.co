@@ -46,12 +46,21 @@ function showSubscriberDetails(subscriberId, element) {
     // تخزين بيانات المشترك في localStorage للوصول إليها في صفحة التفاصيل
     localStorage.setItem('selectedSubscriber', JSON.stringify(subscriberData));
     
-    // الانتقال إلى صفحة التفاصيل
-    window.location.href = 'subscriber-details.html';
+    // تحويل اسم المشترك إلى URL صديق لمحركات البحث
+    const slugName = subscriberData.name
+        .trim()
+        .toLowerCase()
+        .replace(/[\s_]+/g, '-') // تحويل المسافات إلى شرطات
+        .replace(/[^\u0621-\u064A0-9\-]/g, '') // الاحتفاظ بالحروف العربية والأرقام والشرطات فقط
+        .replace(/\-+/g, '-') // تجنب تكرار الشرطات
+        .replace(/^-+|-+$/g, ''); // إزالة الشرطات من البداية والنهاية
+    
+    // الانتقال إلى صفحة التفاصيل مع اسم المشترك في الرابط
+    window.location.href = `subscriber/${slugName}`;
 }
 
 // التحقق مما إذا كنا في صفحة تفاصيل المشترك
-if (window.location.pathname.includes('subscriber-details.html')) {
+if (window.location.pathname.includes('/subscriber/')) {
     // استرجاع بيانات المشترك من localStorage
     const subscriberData = JSON.parse(localStorage.getItem('selectedSubscriber') || '{}');
     

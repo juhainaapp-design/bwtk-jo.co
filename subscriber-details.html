@@ -17,7 +17,7 @@
                 </div>
                 <div class="subscriber-header-info">
                     <h2 id="subscriberName">اسم المشترك</h2>
-                    <button id="restaurantInfoBtn">معلومات عن المطعم</button>
+                    <button id="restaurantInfoBtn">●  معلومات عن المطعم</button>
                 </div>
             </div>
         </header>
@@ -27,9 +27,15 @@
         </main>
     </div>
     <footer class="site-footer" role="contentinfo">
-        <div class="site-footer-inner">
-            <span>Powered by bwtk-jo.com</span>
-        </div>
+            <div class="site-footer-inner">
+                <span>Powered by bwtk-jo.com</span>
+            </div>
+        </footer>
+        <script>
+            document.querySelector('.site-footer').addEventListener('click', function() {
+                window.open('https://juhainaapp-design.github.io/bwtk-jo.co/', '_blank');
+            });
+        </script>
     </footer>
     <script src="script.js"></script>
 </body>
